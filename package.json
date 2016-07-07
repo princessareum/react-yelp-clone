@@ -48,7 +48,8 @@
     "sinon": "^1.17.4",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "yargs": "^4.7.1"
   },
   "dependencies": {
     "font-awesome": "^4.6.3",

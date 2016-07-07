@@ -1,6 +1,7 @@
 // Karma configuration
 // Generated on Thu Jul 07 2016 16:30:15 GMT-0600 (MDT)
 var webpackConfig = require('./webpack.config');
+var argv = require('yargs').argv;
 
 
 module.exports = function(config) {
@@ -31,6 +32,7 @@ module.exports = function(config) {
       'karma-spec-reporter',
       'karma-sourcemap-loader'
     ],
+
 
     // list of files / patterns to load in the browser
     files: [
@@ -84,6 +86,9 @@ module.exports = function(config) {
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
+    concurrency: Infinity,
+
+
+    singleRun: !argv.watch
   })
 }
