@@ -10,9 +10,11 @@ class App extends React.Component {
 
   // class getter
   get content() {
-    return (<Router
+    return (
+      <Router
         routes={this.props.routes}
-        history={this.props.history} />)
+        history={this.props.history} />
+    )
   }
 
   render() {
