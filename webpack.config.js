@@ -41,7 +41,7 @@ var config = getConfig({
 //   in: join(__dirname, 'src/app.js'),
 //   out: join(__dirname, 'dist'),
 //   clearBeforeBuild: true
-// }) <- same thing as above, just with variables
+// }); <- same thing as above, just with variables
 
 
 
@@ -61,7 +61,7 @@ if (isTest) {
     ].indexOf(fnName[1]);
     return idx < 0;
   })
-}
+};
 
 
 
@@ -69,7 +69,7 @@ config.externals = {
   'react/lib/ReactContext': true,
   'react/lib/ExecutionEnvironment': true,
   'react/addons': true
-}
+};
 
 
 
@@ -114,8 +114,8 @@ const newloader = Object.assign({}, cssloader, {
 });
 config.module.loaders.push(newloader);
 cssloader.test =
-  new RegExp(`[^module]${cssloader.test.source}`)
-cssloader.loader = newloader.loader
+  new RegExp(`[^module]${cssloader.test.source}`);
+cssloader.loader = newloader.loader;
 
 
 
@@ -145,9 +145,10 @@ const defines = Object.keys(envVariables)
     __NODE_ENV__: JSON.stringify(NODE_ENV)
   });
 
-  config.plugins = [
+
+config.plugins = [
     new webpack.DefinePlugin(defines)
-  ].concat(config.plugins);
+].concat(config.plugins);
 
 
 module.exports = config;
