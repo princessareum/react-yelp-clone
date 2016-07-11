@@ -3,12 +3,12 @@ import { Router } from 'react-router';
 
 class App extends React.Component {
   static contextTypes = {
-    router: PropTypes.objec
-  };
+    router: PropTypes.object
+  }
 
   static propTypes = {
-    routes: PropTypes.element.isRequired,
-    history: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired,
+    routes: PropTypes.element.isRequired
   };
 
   get content() {
@@ -17,17 +17,15 @@ class App extends React.Component {
         routes={this.props.routes}
         history={this.props.history} />
     )
-  };
+  }
 
-  render() {
-    return (
-      <div style={ { height: '100%' } }>
-        {this.content}
-      </div>
-    )
-  };
-};
+  render () {
+     return (
+       <div style={{ height: '100%' }}>
+         {this.content}
+       </div>
+     )
+   }
+}
 
-
-
-module.exports = App;
+export default App;

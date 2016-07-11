@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import {Route, IndexRoute} from 'react-router';
 import Container from './Container';
 
 import Map from './Map/Map';
@@ -16,6 +16,6 @@ export const makeMainRoutes = () => {
       <IndexRoute component={Map} />
     </Route>
   )
-};
+}
 
-export default makeMainRoutes;
+export default makeMainRoutes

@@ -1,5 +1,5 @@
 import React, { PropTypes as T } from 'react';
-inport classnames from 'classnames';
+import classnames from 'classnames';
 import {getDetails} from 'utils/googleApiHelpers';
 import styles from './styles.module.css';
 

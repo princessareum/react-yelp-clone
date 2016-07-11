@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import Rating from 'components/Rating/Rating';
 import styles from './styles.module.css'
 
-export class Item extends React.Component
+export class Item extends React.Component {
   constructor(props) {
     super(props);
 
