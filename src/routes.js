@@ -1,7 +1,7 @@
-import React from 'react'
-import {browserHistory, Router, Route, Redirect} from 'react-router'
+import React from 'react';
+import {browserHistory, Router, Route, Redirect} from 'react-router';
 
-import makeMainRoutes from './views/Main/routes'
+import makeMainRoutes from './views/Main/routes';
 
 export const makeRoutes = () => {
   const main = makeMainRoutes();
@@ -11,6 +11,6 @@ export const makeRoutes = () => {
       {main}
     </Route>
   )
-}
+};
 
 export default makeRoutes
