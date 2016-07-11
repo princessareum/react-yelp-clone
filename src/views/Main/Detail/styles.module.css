@@ -1,0 +1,24 @@
+@import url("../../../styles/base.css");
+
+.header {
+  padding: 0 var(--padding);
+  h2 {
+    font-size: 1.5em;
+  }
+}
+
+.details {
+  padding: 0 var(--padding);
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+  .photoStrip {
+    flex: 1;
+    display: flex;
+    overflow: auto;
+  }
+  img {
+      margin: 0 1px;
+    }
+}

@@ -1,14 +1,14 @@
-export function searchNearby(google, map, request) {
+export function getDetails(google, map, placeId) {
   return new Promise((resolve, reject) => {
     const service = new google.maps.places.PlacesService(map);
+    const request = {placeId}
 
-    service.nearbySearch(request, (results, status, pagination) => {
-      if (status == google.maps.places.PlacesServiceStatus.OK) {
-
-        resolve(results, pagination);
+    service.getDetails(request, (place, status) => {
+      if (status !== google.maps.places.PlacesServiceStatus.OK) {
+        return reject(status);
       } else {
-        reject(results, status);
+        resolve(place);
       }
     })
-  });
+  })
 }
