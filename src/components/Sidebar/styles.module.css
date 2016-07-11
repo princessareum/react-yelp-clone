@@ -8,7 +8,6 @@
   overflow: hidden;
 
   position: relative;
-  flex: 1;
   z-index: 0;
 
   flex-direction: column;
@@ -19,8 +18,8 @@
     display: block;
     flex-direction: row;
     order: 1;
+    flex: 1;
   }
-
 
   .heading {
     flex: 1;

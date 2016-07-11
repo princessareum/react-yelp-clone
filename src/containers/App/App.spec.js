@@ -1,14 +1,16 @@
-import React from 'react'
-import { expect } from 'chai'
-import { shallow } from 'enzyme'
+import React from 'react';
+import { expect } from 'chai';
+import { shallow } from 'enzyme';
 
-import App from './App'
-import styles from './styles.module.css'
+import App from './App';
+import styles from './styles.module.css';
 
 describe('<App />', () => {
   let wrapper;
+  let history = {};
   beforeEach(() => {
-    wrapper = shallow(<App />)
+    wrapper =
+      shallow(<App history={history}/>)
   });
 
   it('has a Router component', () => {
@@ -16,8 +18,10 @@ describe('<App />', () => {
       .to.have.length(1);
   });
 
-  // it('has a single wrapper element', () => {
-  //   expect(wrapper.find(`.${styles.wrapper}`))
-  //           .to.have.length(1);
-  // });
+  it('passes a history prop', () => {
+    const props = wrapper.find('Router').props();
+    expect(props.history)
+      .to.be.defined;
+  });
+
 });

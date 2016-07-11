@@ -1,24 +1,24 @@
-import React from 'react'
-import {expect} from 'chai'
-import {shallow} from 'enzyme'
+import React from 'react';
+import {expect} from 'chai';
+import {shallow} from 'enzyme';
 
-import Rating from './Rating'
+import Rating from './Rating';
 import styles from './styles.module.css';
 
 describe('<Rating />', function () {
   it('fills the percentage as style', () => {
-  let wrapper = shallow(<Rating percentage={0.10} />)
-  expect(wrapper.find(`.${styles.top}`))
-    .to.have.style('width', '10%');
+    let wrapper = shallow(<Rating percentage={0.10} />)
+    expect(wrapper.find(`.${styles.top}`))
+      .to.have.style('width', '10%');
 
-  wrapper = shallow(<Rating percentage={0.99} />)
-  expect(wrapper.find(`.${styles.top}`))
-    .to.have.style('width', '99%')
+    wrapper = shallow(<Rating percentage={0.99} />)
+    expect(wrapper.find(`.${styles.top}`))
+      .to.have.style('width', '99%')
 
-  let rating = 4;
-  wrapper = shallow(<Rating percentage={rating/5} />)
-  expect(wrapper.find(`.${styles.top}`))
-      .to.have.style('width', '90%')
+    let rating = 4;
+    wrapper = shallow(<Rating percentage={rating/5} />)
+    expect(wrapper.find(`.${styles.top}`))
+        .to.have.style('width', '90%')
   });
 
   it('renders bottom and top star meters', () => {
@@ -26,4 +26,5 @@ describe('<Rating />', function () {
     expect(wrapper.find(`.${styles.top}`)).to.be.present;
     expect(wrapper.find(`.${styles.bottom}`)).to.be.present;
   });
+
 });
