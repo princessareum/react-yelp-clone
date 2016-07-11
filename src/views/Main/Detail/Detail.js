@@ -1,16 +1,12 @@
 import React, { PropTypes as T } from 'react';
+inport classnames from 'classnames';
 import {getDetails} from 'utils/googleApiHelpers';
 import styles from './styles.module.css';
 
 export class Detail extends React.Component {
-
-  componentDidUpdate(prevProps) {
-    if (this.props.map &&
-      (prevProps.map !== this.props.map ||
-      prevProps.params.placeId !== this.props.params.placeId)) {
-        this.getDetails(this.props.map);
+  static childContextTypes = {
+      router: T.object,
     }
-  }
 
   constructor(props, context) {
     super(props, context)
@@ -19,6 +15,20 @@ export class Detail extends React.Component {
       loading: true,
       place: {},
       location: {}
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.map) {
+      this.getDetails(this.props.map)
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.map &&
+      (prevProps.map !== this.props.map ||
+      prevProps.params.placeId !== this.props.params.placeId)) {
+        this.getDetails(this.props.map);
     }
   }
 

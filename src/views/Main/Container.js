@@ -2,12 +2,12 @@ import React from 'react';
 import Map, {GoogleApiWrapper} from 'google-maps-react';
 import {searchNearby} from 'utils/googleApiHelpers';
 import Header from 'components/Header/Header';
-import styles from './styles.module.css';
 import Sidebar from 'components/Sidebar/Sidebar';
+import styles from './styles.module.css';
 
 export class Container extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
 
     this.state = {
       places: [],
@@ -16,21 +16,22 @@ export class Container extends React.Component {
   }
 
   onReady(mapProps, map) {
-    const {google} = this.props;
-    const opts = {
-      location: map.center,
-      radius: '500',
-      types: ['cafe']
-    }
-    searchNearby(google, map, opts)
-      .then((results, pagination) => {
-        this.setState({
-          places: results,
-          pagination
-        })
-      }).catch((status, result) => {
-        // There was an error
+    searchNearby(
+      this.props.google,
+      map,
+      {
+        location: map.center,
+        radius: '500',
+        types: ['cafe']
+      }
+    ).then((results, pagination) => {
+      this.setState({
+        places: results,
+        pagination
       })
+    }).catch((status) => {
+      console.log('error fetching nearby', status)
+    })
   }
 
   onMarkerClick(item){
@@ -62,8 +63,8 @@ export class Container extends React.Component {
            <Header />
            <Sidebar
              title={'Restaurants'}
-             places={this.state.places}
-             />
+             onListItemClick={this.onMarkerClick.bind(this)}
+             places={this.state.places} />
            <div className={styles.content}>
              {children}
           </div>
@@ -79,5 +80,3 @@ Container.contextTypes = {
 export default GoogleApiWrapper({
   apiKey: __GAPI_KEY__
 })(Container)
-
-// export default Container

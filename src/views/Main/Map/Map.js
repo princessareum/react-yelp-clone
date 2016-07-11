@@ -4,11 +4,11 @@ import Map, { Marker } from 'google-maps-react';
 import styles from './styles.module.css';
 
 export class MapComponent extends React.Component {
-  renderChildren(){
+  _renderChildren(){
     const { children } = this.props;
   }
 
-  renderMarkers(){
+  _renderMarkers(){
     if (!this.props.place){
       return null;
     }
@@ -24,13 +24,30 @@ export class MapComponent extends React.Component {
   }
 
   render() {
+    const {children} = this.props;
+
     return (
-      <Map google={this.props.google}
-            className={styles.map}
-            >
+      <Map map={this.props.map}
+        google={this.props.google}
+        className={styles.map}
+        zoom={this.props.zoom}
+        onRecenter={this.props.onMove}
+        onDragend={this.props.onMove}
+        onClick={this.props.onClick}
+        visible={!children || React.Children.count(children) == 0}
+        >
+        {this._renderChildren()}
       </Map>
     )
   }
 }
 
-export default MapComponent;
+MapComponent.propTypes = {
+  onMarkerClick: T.func
+}
+const identity = (...a) => a;
+MapComponent.defaultProps = {
+  onMarkerClick: identity
+}
+
+export default MapComponent
